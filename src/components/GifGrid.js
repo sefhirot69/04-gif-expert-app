@@ -23,10 +23,10 @@ function GifGrid({category}) {
             };
         })
 
-        console.log(gifs);
+        console.log(gifs); //TODO - OJO
     }
 
-    getGifs();
+    getGifs(); //TODO - OJO
 
     return (
         <>
