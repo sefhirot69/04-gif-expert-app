@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
+import GifGridItem from "./GifGridItem";
 
-GifGrid.propTypes = {
-    
-};
+GifGrid.propTypes = {};
 
 function GifGrid({category}) {
 
     const [images, setImages] = useState([]);
+
+    useEffect( () => {
+        getGifs()
+    }, []);
 
     const apiKey = 'e9NDh0olczBjgyILGqOmmHjmnNoolbnY';
     const getGifs = async () => {
@@ -17,11 +20,11 @@ function GifGrid({category}) {
         const resp = await fetch(url);
         const {data} = await resp.json();
 
-        const gifs = data.map( ({id, images, title}) => {
+        const gifs = data.map(({id, images, title}) => {
             return {
-              id : id,
-              title: title,
-              img : images?.downsized_medium.url
+                id: id,
+                title: title,
+                img: images?.downsized_medium.url
             };
         })
 
@@ -29,15 +32,20 @@ function GifGrid({category}) {
         setImages(gifs);
     }
 
-    getGifs()
     return (
         <>
             <h3>{category}</h3>
-            <ol>
-                {
-                    images.map(({id, title}) => <li key={id}>{title}</li>)
-                }
-            </ol>
+            {
+                images.map((img) =>
+                    (
+                        <GifGridItem
+                            key={img.id}
+                            { ...img }
+                        />
+                    )
+                )
+            }
+
         </>
     );
 }

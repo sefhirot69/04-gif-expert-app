@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GifGridItem = (img) => {
+const GifGridItem = ({id, img, title}) => {
 
-    console.log(img);
+    console.log(id);
 
     return (
         <>
-            { img.title }
+            <img src={ img } alt={title}/>
+            <p>{title}</p>
         </>
     );
 };
