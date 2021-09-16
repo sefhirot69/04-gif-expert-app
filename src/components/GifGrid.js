@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 GifGrid.propTypes = {
@@ -6,6 +6,13 @@ GifGrid.propTypes = {
 };
 
 function GifGrid({category}) {
+
+
+    const [count, setCount] = useState(0);
+
+    useEffect( () => {
+        getGifs()
+    }, []);
 
     const apiKey = 'e9NDh0olczBjgyILGqOmmHjmnNoolbnY';
     const getGifs = async () => {
@@ -26,11 +33,11 @@ function GifGrid({category}) {
         console.log(gifs); //TODO - OJO
     }
 
-    getGifs(); //TODO - OJO
-
     return (
         <>
             <h3>{category}</h3>
+            <h3>{count}</h3>
+            <button onClick={ () => setCount( count +1 ) } >{count}</button>
         </>
     );
 }
