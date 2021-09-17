@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas sobre el componente GidGridItem debe mostrar el componente correctamente 1`] = `
+<div
+  className="card animate__animated animate__fadeIn animate__delay-1s"
+  key="1"
+>
+  <img
+    alt="titulo"
+    src="https://google.es"
+  />
+  <p>
+    titulo
+  </p>
+</div>
+`;
