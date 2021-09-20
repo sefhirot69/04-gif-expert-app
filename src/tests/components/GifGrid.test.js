@@ -1,6 +1,7 @@
 import {shallow} from "enzyme";
 import GifGrid from "../../components/GifGrid";
 import useFetchGifs from "../../hooks/useFetchGifs";
+
 jest.mock('../../hooks/useFetchGifs');
 
 describe('Pruebas sobre el componente GifGrid', () => {
@@ -19,11 +20,17 @@ describe('Pruebas sobre el componente GifGrid', () => {
 
     test('debe de mostrar items cuando se cargan imágenes con useFetchGifs', () => {
 
-        const gifs = [{
-            id: 'ABC',
-            url: 'https://localhost/cualquier/cosa.jpg',
-            title: 'Cualquier cosa',
-        }];
+        const gifs = [
+            {
+                id: 'ABC',
+                img: 'https://localhost/cualquier/cosa.jpg',
+                title: 'Cualquier cosa',
+            }, {
+                id: 'ABCD',
+                img: 'https://localhost/cualquier/cosa.jpg',
+                title: 'Cualquier cosa',
+            },
+        ];
 
         useFetchGifs.mockReturnValue({
             data: gifs,
@@ -32,5 +39,7 @@ describe('Pruebas sobre el componente GifGrid', () => {
         const wrapper = shallow(<GifGrid category={category}/>);
 
         expect(wrapper).toMatchSnapshot();
+        expect(wrapper.find('p').exists()).toBe(false);
+        expect(wrapper.find('GifGridItem').length).toBe(gifs.length); //buscamos que existe el componente
     })
 });

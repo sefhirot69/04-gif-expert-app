@@ -5,17 +5,20 @@ exports[`Pruebas sobre el componente GifGrid debe de mostrar items cuando se car
   <h3>
     Goku
   </h3>
-  <p
-    className="animate__animated animate__flash"
-  />
   <div
     className="card-grid"
   >
     <GifGridItem
       id="ABC"
+      img="https://localhost/cualquier/cosa.jpg"
       key="ABC"
       title="Cualquier cosa"
-      url="https://localhost/cualquier/cosa.jpg"
+    />
+    <GifGridItem
+      id="ABCD"
+      img="https://localhost/cualquier/cosa.jpg"
+      key="ABCD"
+      title="Cualquier cosa"
     />
   </div>
 </Fragment>
