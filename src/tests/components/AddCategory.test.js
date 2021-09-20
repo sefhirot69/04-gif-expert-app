@@ -3,9 +3,13 @@ import AddCategory from "../../components/AddCategory";
 
 describe('Pruebas sobre AddCategory', () => {
 
-    const setCategories = () => {
-    };
-    const wrapper = shallow(<AddCategory setCategories={setCategories}/>)
+    const setCategories = jest.fn();
+    let wrapper;
+
+    beforeEach(() => {
+        jest.clearAllMocks();
+        wrapper = shallow(<AddCategory setCategories={setCategories}/>);
+    });
 
     test('Debe mostrar el componente AddCategory', () => {
 
@@ -19,4 +23,12 @@ describe('Pruebas sobre AddCategory', () => {
 
         input.simulate('change', {target: {value}});
     });
+
+    test('No debe de postear la informacion con submit', () => {
+
+        const submit = wrapper.find('form').simulate('submit',{ preventDefault: () => {}});
+
+        expect(setCategories).not.toHaveBeenCalled();
+    });
+
 });
