@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import useFetchGifs from "../hooks/useFetchGifs";
 import GifGridItem from "./GifGridItem";
 
-GifGrid.propTypes = {};
+GifGrid.propTypes = {
+    category : PropTypes.string.isRequired
+};
 
 function GifGrid({category}) {
 
